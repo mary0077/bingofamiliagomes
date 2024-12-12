@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Bingo!</title>
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/material_icons.css">
+	</head>
+	<body>
+		<header>
+			<span id="title">Bingo</span>
+			<br>
+			<span id="title">Família Gomes</span>
+			<button onclick="reset();" class="btn" id="rstbtn"><i class="material-icons">refresh</i></button>
+		</header>
+		<!-- <button onclick="newNum();" class="btn" id="caller">P&oacute;rximo N&uacute;mero</button> -->
+		<div class="container">
+			<div class="card" id="lastNum" onclick="newNum()" class="btn">
+				<h1>Começar</h1>
+				<h2>Clique aqui para um novo jogo</h2>
+			</div>
+			<div class="card-long">
+				<h2>Números sorteados:</h2>
+				<p id="nums"></p>
+			</div>
+		</div>
+		<div class="container" id="setores"></div> 
+
+		<script src="js/script.js"></script>
+	</body>
+</html>
