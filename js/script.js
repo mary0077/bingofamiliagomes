@@ -1,106 +1,75 @@
-var letra;
-var setor;
-var limite		= 75;
-var palavra 	= "bingo";
-var letras		= palavra.split('');
-var qtLetra		= letras.length;
-var perLetra	= limite/qtLetra ;
-var nums 		= [];
-var finalizado	= false;
+var limite = 75;
+var nums = [];
+var finalizado = false;
 
-//elementos
-var title		= document.getElementById('title');
-var botao 		= document.getElementById('caller');
-var botaoReset 	= document.getElementById('rstbtn');
-var lastNumP 	= document.getElementById('lastNum');
-var numsP 		= document.getElementById('nums');
-var setores		= document.getElementById('setores');
+// Elementos do DOM
+var title = document.getElementById('title');
+var botao = document.getElementById('caller');
+var botaoReset = document.getElementById('rstbtn');
+var lastNumP = document.getElementById('lastNum');
+var numsP = document.getElementById('nums');
+var setores = document.getElementById('setores');
 
-//função 
-function createCard(title, width){
-	var card = document.createElement('div');
-	card.classList.add('card');
-	card.style.width = width+"%";
-
-	var h1 = document.createElement('h1');
-	h1.innerHTML = title.toUpperCase();
-	card.append(h1);
-
-	var p = document.createElement('p');
-	p.id = title;
-	card.append(p);
-
-	return card;
-}
-
-for(var e = 0; e < letras.length; e++) {
-	var section = createCard(letras[e],(100/letras.length));
-	setores.append(section);
-}
-
-
-//função para gerar numeros inteiros aleatórios
+// Função para gerar números inteiros aleatórios
 function randomInt(min, max) {
-	return Math.floor(Math.random() * (max - min + 1) ) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// Função para sortear um novo número
+function newNum() {
+  if (!finalizado) {
+    // Sorteia um número aleatório entre 1 e o limite
+    var newNum = randomInt(1, limite);
 
-function newNum(){
-	if(!finalizado){
+    // Verifica se o número já foi sorteado
+    if (!nums.includes(newNum)) {
+      // Adiciona o número à lista de números sorteados
+      nums.push(newNum);
 
-		var newNum = randomInt(1,limite);
+      // Exibe o número sorteado com animação
+      lastNumP.innerHTML = `<h1>${newNum}</h1>`;
 
-		if(!nums.includes(newNum)){
+      // Adiciona o novo número à lista de sorteados
+      numsP.innerHTML = nums.join(', ');
 
-			//verifica a letra a que o número pertence
-			for(var i = 0; i < letras.length; i++){
-				if(newNum >= ((i * perLetra) + 1) && newNum <= ((i+1)*perLetra)){
-					letra = letras[i];
-				}
-			}
+      // Atualiza o contador de números restantes
+      var restantes = limite - nums.length;
+      setores.innerHTML = `<h2>Faltam ${restantes} números para o Bingo!</h2>`;
 
-			setor = document.getElementById(letra);
-			//Adiciona o novo número na letra correspondente
-			if(setor.innerHTML == ''){
-				setor.innerHTML += newNum;
-			}else{
-				setor.innerHTML += ', '+newNum;
-			}
-
-			//Escreve o último número na div correspondente
-			lastNumP.innerHTML = "<h1>"+letra.toUpperCase()+"</h1><p>"+newNum+"</p>";
-
-			//Adiciona o novo número no array dos já foram
-			nums.push(newNum);
-
-			//confere se o jogo foi finalizado
-			if(nums.length == limite){
-				title.innerHTML += " - Finalizado"
-				caller.disabled = 'disabled';
-				finalizado = true;
-			}
-
-			// Escreve os números que já foram em ordem decrescente
-			for(var c = nums.length; c > 0; c--){
-				if(c == nums.length){
-					numsP.innerHTML = nums[c-1];
-				}else{
-					numsP.innerHTML += ", "+nums[c-1];
-				}
-			}
-		}else{
-			this.newNum();
-		}
-	}
+      // Confere se todos os números foram sorteados
+      if (nums.length == limite) {
+        title.innerHTML += " - Finalizado";
+        botao.disabled = true; // Desabilita o botão de sortear
+        finalizado = true;
+      }
+    } else {
+      // Se o número já foi sorteado, tenta novamente
+      newNum();
+    }
+  }
 }
 
-document.addEventListener('keyup',function(event){
-	event.preventDefault();
-	if(event.keyCode === 13){
-		newNum();
-	}
+// Função para reiniciar o jogo
+function reset() {
+  nums = [];
+  finalizado = false;
+  botao.disabled = false;
+  title.innerHTML = "Bingo!";
+  lastNumP.innerHTML = "";
+  numsP.innerHTML = "";
+  setores.innerHTML = "";
+}
+
+// Adiciona o ouvinte de evento para o botão de sortear
+botao.addEventListener('click', newNum);
+
+// Adiciona o ouvinte de evento para o botão de reset
+botaoReset.addEventListener('click', reset);
+
+// Adiciona o ouvinte de evento para a tecla Enter (keyCode 13)
+document.addEventListener('keyup', function(event) {
+  event.preventDefault();
+  if (event.keyCode === 13) {
+    newNum();
+  }
 });
-
-function reset(){
-	location.reload();
-}

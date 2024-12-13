@@ -1,137 +1,165 @@
-html{
-	font-family: Arial;
-}
-body{
-	height: 100vh;
-	padding: 0;
-	margin: 0;
-	background-color: #000;
-}
-header{
-	background-color: #113391;
-	padding: 0px;
-	font-family: 'arial black';
-	text-align: center;
-	text-transform: uppercase;
-	font-size: 70px;
-	color: white;
-	text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-	letter-spacing: -5px;
-	border: 5px solid black;
-}
-.btn{
-	background-color: #838794;
-	height: 50px;
-	width: 50px;
-	line-height: 40px;
-	padding: 10px;
-	margin: 5px;
-	font-family: Arial;
-	color: white;
-	font-size: 20px;
-	text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-	border: none;
-	border-radius: 5px;
-	box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.6);
-	float: right;
-
-}
-.btn:hover{
-	cursor: pointer;
-	background-color: #325fdd;
-}
-.btn:focus{
-	outline: none;
-}
-.btn[disabled]{
-	background-color: lightgrey;
-}
-.container{
-	width: 100%;
-}
-.card{
-	display: block;
-	float: left;
-	box-sizing: border-box;
-	width: 35%;
-	padding: 10px 10px 100px 10px;
-	background-color: white;
-	height: 260px;
-	user-select: none;
-	border: 5px solid black;
-}
-.card p{
-	margin: 1px;
-}
-.card:nth-child(odd){
-	background-color: #113391;
-	color: white;
-}
-.card:nth-child(even){
-	background-color: #aaa;
-}
-.card h1, .card h2, .card h3, .card-long h2{
-	text-align: center;
-	margin: 0;
-}
-.card h1{
-	border: 5px solid black;
-	background-color: white;
-	color: black;
-}
-.card p, .card-long p{
-	font-size: 30px;
-	font-weight: bold;
-	text-align: center;
-}
-.card-long{
-	width: 65%;
-	display: block;
-	float: left;
-	box-sizing: border-box;
-	padding: 10px 10px 100px 10px;
-	background-color: white;
-	height: 260px;
-	border: 5px solid black;
-
-}
-#lastNum{
-	display: block;
-	float: left;
-	background-color: white !important;
-	color: black;
-}
-#lastNum h1{
-	font-size:50px;
-}
-#lastNum p{
-	color: #3f51b5;
-	text-shadow: 0 0 5px #3f51b5;
-	animation: brilhar 2s 1;
-	font-size: 650%;
-	background-color: orange;
-	width: 160px;
-	height: 160px;
-	border-radius: 50%;
-	line-height: 160px;
-	margin: 10px auto 0 auto;
-	text-align: center;
-}
-#lastNum:hover p{
-	animation: brilhar 2s infinite;
-}
-@keyframes brilhar{
-	0%{
-		font-size: 650%;
-	}
-	50%{
-		font-size: 800%;
-	}
-	100%{
-		font-size: 650%;
-	}
+html {
+    font-family: Arial;
 }
 
-#lastNum:hover{
-	cursor: pointer;
+body {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: #000;
+}
+
+header {
+    background-color: #113391;
+    padding: 0px;
+    font-family: 'arial black';
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 70px;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+    letter-spacing: -5px;
+    border: 5px solid black;
+}
+
+.btn {
+    background-color: #838794;
+    height: 50px;
+    width: 50px;
+    line-height: 40px;
+    padding: 10px;
+    margin: 5px;
+    font-family: Arial;
+    color: white;
+    font-size: 20px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.6);
+    float: right;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: #325fdd;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn[disabled] {
+    background-color: lightgrey;
+}
+
+.container {
+    width: 100%;
+}
+
+.card {
+    display: block;
+    float: left;
+    box-sizing: border-box;
+    width: 35%;
+    padding: 10px 10px 100px 10px;
+    background-color: white;
+    height: 260px;
+    user-select: none;
+    border: 5px solid black;
+}
+
+.card p {
+    margin: 1px;
+}
+
+.card:nth-child(odd) {
+    background-color: #113391;
+    color: white;
+}
+
+.card:nth-child(even) {
+    background-color: #aaa;
+}
+
+.card h1, .card h2, .card h3, .card-long h2 {
+    text-align: center;
+    margin: 0;
+}
+
+.card h1 {
+    border: 5px solid black;
+    background-color: white;
+    color: black;
+}
+
+.card p, .card-long p {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-long {
+    width: 65%;
+    display: block;
+    float: left;
+    box-sizing: border-box;
+    padding: 10px 10px 100px 10px;
+    background-color: white;
+    height: 260px;
+    border: 5px solid black;
+}
+
+#lastNum {
+    display: block;
+    float: left;
+    background-color: white !important;
+    color: black;
+}
+
+#lastNum h1 {
+    font-size: 80px; /* Aumenta o tamanho do número */
+    color: #ff5722; /* Altera a cor do número */
+}
+
+#lastNum p {
+    color: #3f51b5;
+    text-shadow: 0 0 10px #3f51b5, 0 0 20px #3f51b5;
+    font-size: 800%; /* Aumenta o tamanho */
+    background-color: orange;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    line-height: 200px;
+    margin: 10px auto 0 auto;
+    text-align: center;
+    transition: all 0.3s ease-in-out; /* Animação suave */
+}
+
+#lastNum p:hover {
+    transform: scale(1.1); /* Aumenta o número ao passar o mouse */
+    animation: brilhar 2s infinite;
+}
+
+@keyframes brilhar {
+    0% {
+        font-size: 650%;
+    }
+    50% {
+        font-size: 800%;
+    }
+    100% {
+        font-size: 650%;
+    }
+}
+
+#lastNum:hover {
+    cursor: pointer;
+}
+
+/* Aumenta o tamanho da lista de números sorteados */
+.card-long p {
+    font-size: 50px; /* Aumenta o tamanho da fonte para os números sorteados */
+    color: #ff9800;
+    font-weight: bold; /* Deixa os números mais destacados */
+    margin: 10px 0; /* Dá um espaço entre os números */
 }
