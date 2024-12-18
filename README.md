@@ -6,7 +6,7 @@
 - Alterar a palavra formada (o padrão é "bingo") através da variável 'palavra'
 
 ##### Como Jogar:
-- Para começar basta clicar em novo jogo, ou pressionar a tecla Enter
+- Para começar basta clicar em *COMEÇAR*, ou pressionar a tecla Enter
 - Para sortear um novo número basta clicar no mesmo lugar. A tecla Enter também funciona
 
 ##### Acabei, e agora?
