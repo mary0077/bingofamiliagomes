@@ -67,6 +67,36 @@ header {
     user-select: none;
     border: 5px solid black;
 }
+.roulette-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.roulette {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #113391;
+    background: conic-gradient(
+        #ff5722 0% 25%, 
+        #3f51b5 25% 50%, 
+        #ff9800 50% 75%, 
+        #4caf50 75% 100%
+    );
+    position: relative;
+    animation: spin 3s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 .card p {
     margin: 1px;

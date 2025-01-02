@@ -17,23 +17,35 @@ function randomInt(min, max) {
 // Função para sortear um novo número
 function newNum() {
   if (!finalizado) {
-    var newNum = randomInt(1, limite);
+      const roulette = document.getElementById('roulette');
 
-    if (!nums.includes(newNum)) {
-      nums.push(newNum);
-      lastNumP.innerHTML = `<h1>${newNum}</h1>`;
-      numsP.innerHTML = nums.join(', ');
-      setores.innerHTML = `<h2>Faltam ${limite - nums.length} números para o Bingo!</h2>`;
+      // Reinicia a roleta com animação
+      roulette.style.animation = 'spin 3s cubic-bezier(0.42, 0, 0.58, 1)';
+      
+      setTimeout(() => {
+          // Para a roleta após 3 segundos
+          roulette.style.animation = 'none';
 
-      if (nums.length == limite) {
-        title.innerHTML += " - Finalizado";
-        finalizado = true;
-      }
-    } else {
-      newNum();
-    }
+          // Sorteia o número e exibe
+          var newNum = randomInt(1, limite);
+
+          if (!nums.includes(newNum)) {
+              nums.push(newNum);
+              lastNumP.innerHTML = `<h1>${newNum}</h1>`;
+              numsP.innerHTML = nums.join(', ');
+              setores.innerHTML = `<h2>Faltam ${limite - nums.length} números para o Bingo!</h2>`;
+
+              if (nums.length == limite) {
+                  title.innerHTML += " - Finalizado";
+                  finalizado = true;
+              }
+          } else {
+              newNum();
+          }
+      }, 3000); // Aguarda o tempo da animação
   }
 }
+
 
 // Função para reiniciar o jogo
 function reset() {
