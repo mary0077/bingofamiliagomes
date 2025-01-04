@@ -1,6 +1,7 @@
 var limite = 80;
 var nums = [];
 var finalizado = false;
+var intervalo;
 
 // Elementos do DOM
 var title = document.getElementById('title');
@@ -32,12 +33,13 @@ function newNum() {
           if (!nums.includes(newNum)) {
               nums.push(newNum);
               lastNumP.innerHTML = `<h1>${newNum}</h1>`;
-              numsP.innerHTML = nums.join(', ');
+              numsP.innerHTML = nums.map(num => `<span>${num}</span>`).join(' ');
               setores.innerHTML = `<h2>Faltam ${limite - nums.length} números para o Bingo!</h2>`;
 
               if (nums.length == limite) {
                   title.innerHTML += " - Finalizado";
                   finalizado = true;
+                  stopRoulette(); // Para a roleta quando terminar
               }
           } else {
               newNum();
@@ -46,6 +48,19 @@ function newNum() {
   }
 }
 
+// Função para iniciar a roleta automaticamente
+function startRoulette() {
+  if (!finalizado) {
+    intervalo = setInterval(newNum, 10000); // Sorteia um número a cada 10 segundos
+    newNum(); // Sorteia o primeiro número imediatamente
+  }
+}
+
+// Função para parar a roleta
+function stopRoulette() {
+  clearInterval(intervalo);
+  intervalo = null;
+}
 
 // Função para reiniciar o jogo
 function reset() {
@@ -55,7 +70,9 @@ function reset() {
   lastNumP.innerHTML = "<h1>Começar</h1><h2>Clique aqui para um novo jogo</h2>";
   numsP.innerHTML = "";
   setores.innerHTML = "";
+  stopRoulette(); // Para o intervalo caso esteja ativo
 }
 
-// Adiciona o ouvinte de evento para o botão de reset
+// Adiciona os ouvintes de eventos
 botaoReset.addEventListener('click', reset);
+lastNumP.addEventListener('click', startRoulette);
